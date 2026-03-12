@@ -144,3 +144,18 @@ h1 {
   transform: translateY(1px);
   box-shadow: 0 3px 10px rgba(249,202,36,0.3);
 }
+
+.contact-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--subtitle);
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.contact-link:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
