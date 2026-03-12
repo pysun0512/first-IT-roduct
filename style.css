@@ -4,14 +4,59 @@
   padding: 0;
 }
 
+/* ── 다크 모드 (기본) ── */
+[data-theme="dark"] {
+  --bg: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  --text: #ffffff;
+  --subtitle: #aaaaaa;
+  --theme-btn-bg: rgba(255,255,255,0.1);
+  --theme-btn-color: #fff;
+  --theme-btn-border: rgba(255,255,255,0.2);
+}
+
+/* ── 라이트 모드 ── */
+[data-theme="light"] {
+  --bg: linear-gradient(135deg, #e0eafc, #cfdef3, #a8c0ff);
+  --text: #1a1a2e;
+  --subtitle: #555555;
+  --theme-btn-bg: rgba(0,0,0,0.08);
+  --theme-btn-color: #1a1a2e;
+  --theme-btn-border: rgba(0,0,0,0.15);
+}
+
 body {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  background: var(--bg);
   font-family: 'Segoe UI', sans-serif;
-  color: #fff;
+  color: var(--text);
+  transition: background 0.4s, color 0.4s;
+}
+
+/* ── 테마 토글 버튼 ── */
+#themeBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--theme-btn-border);
+  background: var(--theme-btn-bg);
+  color: var(--theme-btn-color);
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.2s;
+  backdrop-filter: blur(6px);
+}
+
+#themeBtn:hover {
+  transform: scale(1.1);
 }
 
 .container {
@@ -23,11 +68,12 @@ h1 {
   font-size: 2.5rem;
   margin-bottom: 8px;
   letter-spacing: 2px;
+  color: var(--text);
 }
 
 .subtitle {
   font-size: 1rem;
-  color: #aaa;
+  color: var(--subtitle);
   margin-bottom: 40px;
 }
 
@@ -50,7 +96,7 @@ h1 {
   font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   animation: popIn 0.4s ease forwards;
   opacity: 0;
 }
@@ -68,12 +114,12 @@ h1 {
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* 번호 구간별 색상 (한국 로또 스타일) */
-.range-1  { background: linear-gradient(145deg, #f9ca24, #f0932b); } /* 1~10  노랑 */
-.range-2  { background: linear-gradient(145deg, #6ab04c, #badc58); } /* 11~20 초록 */
-.range-3  { background: linear-gradient(145deg, #eb4d4b, #ff7979); } /* 21~30 빨강 */
-.range-4  { background: linear-gradient(145deg, #7c67ee, #a29bfe); } /* 31~40 보라 */
-.range-5  { background: linear-gradient(145deg, #74b9ff, #0984e3); } /* 41~45 파랑 */
+/* 번호 구간별 색상 */
+.range-1 { background: linear-gradient(145deg, #f9ca24, #f0932b); }
+.range-2 { background: linear-gradient(145deg, #6ab04c, #badc58); }
+.range-3 { background: linear-gradient(145deg, #eb4d4b, #ff7979); }
+.range-4 { background: linear-gradient(145deg, #7c67ee, #a29bfe); }
+.range-5 { background: linear-gradient(145deg, #74b9ff, #0984e3); }
 
 #pickBtn {
   padding: 16px 48px;
